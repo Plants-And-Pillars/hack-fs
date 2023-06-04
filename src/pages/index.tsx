@@ -20,6 +20,10 @@ export default function Home() {
           <Heading>Zen Garden</Heading>
           <ConnectButton />
         </Flex>
+        <Flex direction="row" justify="space-around" align="center">
+          <DraggableSprites />
+          <ListOfSprites />
+        </Flex>
       </main>
     </>
   );

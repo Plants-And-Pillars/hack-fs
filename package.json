@@ -12,18 +12,23 @@
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@pixi/react": "^7.0.3",
     "@rainbow-me/rainbowkit": "^0.12.8",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
+    "alchemy-sdk": "^2.8.0",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "ethers": "^5",
     "framer-motion": "^10.10.0",
+    "ipfs-http-client": "^60.0.1",
     "next": "13.2.4",
+    "pixi.js": "^7.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.3",
-    "wagmi": "^0.12.10"
+    "wagmi": "^0.12.10",
+    "zustand": "^4.3.7"
   }
 }
