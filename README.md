@@ -1,5 +1,5 @@
 # Zen Garden
-## Ploygon APAC Hackathon
+## Chainlink Spring Hackathon
 
 ## Contracts
 
