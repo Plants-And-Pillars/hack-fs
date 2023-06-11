@@ -17,7 +17,7 @@ const useSpriteStore = create((set) => ({
 
     fetchedNFTs: null,
     setFetchedNFTs: (fetchedNFTs) => set(() => ({ fetchedNFTs })),
-    moveAFetchedNFTToSprites: (tokenId, x=50, y=50) => set((state) => {
+    moveAFetchedNFTToSprites: (tokenId, x=150, y=150) => set((state) => {
         const newFetchedNFTs = state.fetchedNFTs.filter((nft) => nft.tokenId !== tokenId);
         const fetchedNFT = state.fetchedNFTs.find((nft) => nft.tokenId === tokenId);
         return {

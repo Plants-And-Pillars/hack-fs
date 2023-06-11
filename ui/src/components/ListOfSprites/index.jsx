@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { Stage } from "@pixi/react";
 
-import { useAccount, useContract, useSigner } from "wagmi";
+import { useAccount, useContract, useContractEvent, useSigner } from "wagmi";
 
 import useSpriteStore from "../../store/useSpriteStore";
 import CustomSprite from "./CustomSprite";

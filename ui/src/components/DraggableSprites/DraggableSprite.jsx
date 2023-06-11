@@ -7,7 +7,7 @@ export const DraggableSprite = ({ tokenId, x, y, image, ...props }) => {
   return (
     <Sprite
       image={image}
-      scale={0.5}
+      scale={0.18}
       {...bind}
       {...props}
     />
