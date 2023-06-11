@@ -33,6 +33,10 @@ contract Tree is
 
     Counters.Counter private _tokenIdCounter;
 
+    // growth automation interval (s)
+    uint256 private growthInterval = 60;
+    uint public lastTimeStamp;
+
     event RequestSent(uint256 requestId);
     event RequestFulfilled(uint256 requestId, uint256 dailyGrowth);
 
@@ -67,10 +71,15 @@ contract Tree is
         ERC721("Tree", "TRE")
         VRFConsumerBaseV2(0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed)
     {
+        lastTimeStamp = block.timestamp;
         COORDINATOR = VRFCoordinatorV2Interface(
             0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed
         );
         s_subscriptionId = subscriptionId;
+    }
+
+    function setGrowthInterval(uint256 interval) public onlyOwner {
+        growthInterval = interval;
     }
 
     // Chainlink VRF functions
@@ -78,9 +87,10 @@ contract Tree is
     // Assumes the subscription is funded sufficiently.
     function requestRandomWords()
         external
-        onlyOwner
         returns (uint256 requestId)
     {
+        require((block.timestamp - lastTimeStamp) > growthInterval);
+        
         // Will revert if subscription is not set and funded.
         requestId = COORDINATOR.requestRandomWords(
             keyHash,
@@ -104,6 +114,8 @@ contract Tree is
         uint256[] memory _randomWords
     ) internal override {
         require(s_requests[_requestId].exists, "request not found");
+
+        lastTimeStamp = block.timestamp;
 
         s_requests[_requestId].fulfilled = true;
 
