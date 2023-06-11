@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "npx hardhat run scripts/deploy.ts --network polygon_mumbai"
+    "deploy-forest": "npx hardhat run scripts/deploy_forest.ts --network polygon_mumbai",
+    "deploy-tree": "npx hardhat run scripts/deploy_tree.ts --network polygon_mumbai"
   },
   "keywords": [],
   "author": "",

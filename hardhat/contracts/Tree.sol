@@ -3,7 +3,6 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -20,7 +19,6 @@ struct TokenData {
 contract Tree is
     ERC721,
     ERC721Enumerable,
-    ERC721URIStorage,
     ERC721Burnable,
     Ownable,
     VRFConsumerBaseV2
@@ -66,10 +64,9 @@ contract Tree is
     constructor(
         uint64 subscriptionId
     )
+        ERC721("Tree", "TRE")
         VRFConsumerBaseV2(0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed)
-        ConfirmedOwner(msg.sender)
     {
-        ERC721("Tree", "TRE");
         COORDINATOR = VRFCoordinatorV2Interface(
             0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed
         );
@@ -140,12 +137,12 @@ contract Tree is
     ) public view returns (TokenData[] memory) {
         uint256 tokenCount = balanceOf(_owner);
         if (tokenCount == 0) {
-            return new uint256[](0);
+            return new TokenData[](0);
         } else {
             TokenData[] memory result = new TokenData[](tokenCount);
-            uint256 memory index;
+            uint256 index;
             for (index = 0; index < tokenCount; index++) {
-                uint256 memory tokenId = tokenOfOwnerByIndex(_owner, index);
+                uint256 tokenId = tokenOfOwnerByIndex(_owner, index);
                 // imageURL will be fetched from the growthScore on frontend
                 result[index] = TokenData({
                     tokenId: tokenId,
@@ -174,7 +171,7 @@ contract Tree is
     )
         public
         view
-        override(ERC721, ERC721Enumerable, ERC721URIStorage)
+        override(ERC721, ERC721Enumerable)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
