@@ -22,7 +22,7 @@ const useSpriteStore = create((set) => ({
         const fetchedNFT = state.fetchedNFTs.find((nft) => nft.tokenId === tokenId);
         return {
             fetchedNFTs: newFetchedNFTs, sprites: [...state.sprites, {
-                x, y, image: fetchedNFT.media[0].thumbnail, tokenId
+                x, y, image: fetchedNFT.imageURL, tokenId
             }]
         };
     }

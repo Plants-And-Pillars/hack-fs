@@ -6,7 +6,7 @@ import { create } from "ipfs-http-client";
 import useSpriteStore from "@/store/useSpriteStore";
 import DraggableSpritesContent from "./DraggableSpritesContent";
 
-import forestContractABI from "@/contracts/abi/forestContractABI.json";
+import forestContractABI from "@/contracts/abi/forest.json";
 
 import { Button, Flex, useToast } from "@chakra-ui/react";
 
