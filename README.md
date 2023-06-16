@@ -1,5 +1,5 @@
 # Zen Garden
-## Chainlink Spring Hackathon
+## HackFS 2023 Hackathon
 
 ## Contracts
 
