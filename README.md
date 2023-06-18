@@ -17,4 +17,17 @@
 - Deployed on: Polygon Mumbai
 - Deployment address: 0x11e405C734746e129179c576ECBC748C04B006d8
 
-### Chainlink VRF and Chainlink Automation - [Tree.sol](https://github.com/Plants-And-Pillars/chainlink-spring-hack/blob/main/hardhat/contracts/Tree.sol)
+### How its Made
+- The project incorporates React Pixijs for facilitating the drag-and-drop functionality of NFT Trees owned by users in their Zen Garden.
+
+- Tree and Forest contracts are deployed on FVM.
+
+- Zen Garden of different individuals(building/working on FVM) and companies(storage providers) will help Filecoin ecosystem to keep track of carbon offsets and RECs (renewable energy credits) to track the network’s total carbon footprint over time. Perhaps these RECs and offsets be minted and tracked natively on FVM.
+This would enable secondary lending markets (filtered by sustainability claims), SP insurance underwriting based on sustainability inputs, and a whole lot more.
+
+- Polybase is used for dynamic Tree NFT metadata which is integrated with drand.
+
+- Drand is used to generate a random number which gamifies the experience and gives every tree NFT random Growth points.
+
+- ENS is used for the people to access their Forests.
+
