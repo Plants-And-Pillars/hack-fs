@@ -1,10 +1,26 @@
 import Head from "next/head";
-
+import { useEffect, useState } from 'react'
+import { Heading, Container, Text, Stack, Button, Input, InputGroup, InputLeftAddon, HStack, Avatar, Flex } from '@chakra-ui/react'
+import { Auth } from '@polybase/auth'
+import { ethPersonalSignRecoverPublicKey } from '@polybase/eth'
+import { Polybase } from '@polybase/client'
+import { useCollection } from '@polybase/react'
 import DraggableSprites from "@/components/DraggableSprites";
 import ListOfSprites from "@/components/ListOfSprites";
-
-import { Flex, Heading } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Navbar from "@/components/Navbar"
+
+
+const db = new Polybase({
+  defaultNamespace: "pk/0xd0a01f02e20799e96fccf04653fbdd6fd2d9cfdd3784b543f5838d9666e9c449b8a0cdbc83af91cf9cad9966861d34479454d3f2bb034017de3765d6819870d0/Zen_Garden",
+});
+
+
+// async function getPublicKey() {
+//   const msg = 'Login'
+//   const publicKey = ethPersonalSignRecoverPublicKey(sig, msg)
+//   return '0x' + publicKey.slice(4)
+// }
 
 export default function Home() {
   return (
@@ -16,9 +32,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+      <Navbar/>
+        
         <Flex margin="3% 0" justify="space-evenly">
-          <Heading>Zen Garden</Heading>
-          <ConnectButton />
         </Flex>
         <Flex direction="row" justify="space-around" align="center">
           <DraggableSprites />
