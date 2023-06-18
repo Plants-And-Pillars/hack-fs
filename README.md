@@ -23,11 +23,11 @@
 - Tree and Forest contracts are deployed on FVM.
 
 - Zen Garden of different individuals(building/working on FVM) and companies(storage providers) will help Filecoin ecosystem to keep track of carbon offsets and RECs (renewable energy credits) to track the network’s total carbon footprint over time. Perhaps these RECs and offsets be minted and tracked natively on FVM.
-This would enable secondary lending markets (filtered by sustainability claims), SP insurance underwriting based on sustainability inputs, and a whole lot more.
+This would enable secondary lending markets (filtered by sustainability claims), SP insurance underwriting based on sustainability inputs, and a whole lot more. - [Code Integration](https://github.com/Plants-And-Pillars/hack-fs/blob/main/hardhat/contracts/Tree.sol)
 
-- Polybase is used for dynamic Tree NFT metadata which is integrated with drand.
+- Polybase is used for dynamic Tree NFT metadata which is integrated with drand - [Code Integration](https://github.com/Plants-And-Pillars/hack-fs/blob/polybase/ui/src/pages/index.tsx)
 
-- Drand is used to generate a random number which gamifies the experience and gives every tree NFT random Growth points.
+- Drand is used to generate a random number which gamifies the experience and gives every tree NFT random Growth points - [Code Integration](https://github.com/Plants-And-Pillars/hack-fs/blob/main/hardhat/contracts/Tree_new.sol)
 
-- ENS is used for the people to access their Forests.
+- ENS is used for the people to access their Forests - [Code Integration](https://github.com/Plants-And-Pillars/hack-fs/blob/main/ui/src/pages/forest/%5Bens%5D.tsx)
 
