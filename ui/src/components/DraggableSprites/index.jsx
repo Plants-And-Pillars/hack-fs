@@ -25,6 +25,7 @@ import { Button, Flex, useToast } from "@chakra-ui/react";
 const DraggableSprites = () => {
   const toast = useToast();
 
+  const { address } = useAccount();
   const { data: signerData } = useSigner();
 
   const forestContract = useContract({
@@ -90,10 +91,10 @@ const DraggableSprites = () => {
   };
 
   useEffect(() => {
-    if (!signerData || !forestContract) return;
+    if (!signerData || !forestContract || !address) return;
 
     forestContract
-      .getTokenId()
+      .getTokenIdByAddress(address)
       .then((tx) => {
         const tokenId = tx.toNumber();
         console.log("TOKEN ID", tokenId);
@@ -110,7 +111,7 @@ const DraggableSprites = () => {
       })
       .catch((error) => {
         console.log("error", error);
-        if (error.reason === "ERC721: caller does not have a token") {
+        // if (error.reason === "ERC721: caller does not have a token") {
           toast({
             title: "Token not found",
             description:
@@ -148,9 +149,9 @@ const DraggableSprites = () => {
             .catch((error) => {
               console.log("error", error);
             });
-        }
+        // }
       });
-  }, [signerData, forestContract]);
+  }, [signerData, forestContract, address]);
 
   useEffect(() => {
     console.log("forestTokenId", forestTokenId);

@@ -10,6 +10,7 @@ contract Forest is ERC721, ERC721Enumerable, ERC721URIStorage {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
+
     constructor() ERC721("Forest", "FOR") {}
 
     /*
@@ -34,14 +35,14 @@ contract Forest is ERC721, ERC721Enumerable, ERC721URIStorage {
         - This function is checking if the caller already owns an NFT (non-fungible token) by calling the `balanceOf()` function to get the number of tokens owned by the caller.
         - If the balance is not equal to 0, it will revert with an error message.
     */
-    function getTokenId() public view returns (uint256) {
+    function getTokenIdByAddress(address owner) public view returns (uint256) {
         require(
-            // caller should have a token
-            balanceOf(msg.sender) > 0,
-            "ERC721: caller does not have a token"
+            // owner should have a token
+            balanceOf(owner) > 0,
+            "ERC721: owner does not have a token"
         );
 
-        uint256 tokenId = tokenOfOwnerByIndex(msg.sender, 0);
+        uint256 tokenId = tokenOfOwnerByIndex(owner, 0);
 
         return tokenId;
     }
@@ -51,11 +52,7 @@ contract Forest is ERC721, ERC721Enumerable, ERC721URIStorage {
         - It calls the `tokenURI` function from the `ERC721URIStorage` contract, which returns the URI associated with the given `tokenId`.
         - This function is useful for retrieving the metadata associated with a specific NFT.
     */
-    function getTokenURI(uint256 tokenId)
-        public
-        view
-        returns (string memory)
-    {
+    function getTokenURI(uint256 tokenId) public view returns (string memory) {
         return tokenURI(tokenId);
     }
 
@@ -75,32 +72,30 @@ contract Forest is ERC721, ERC721Enumerable, ERC721URIStorage {
 
     // The following functions are overrides required by Solidity.
 
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize)
-        internal
-        override(ERC721, ERC721Enumerable)
-    {
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId,
+        uint256 batchSize
+    ) internal override(ERC721, ERC721Enumerable) {
         super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+    function _burn(
+        uint256 tokenId
+    ) internal override(ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
 
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
+    function tokenURI(
+        uint256 tokenId
+    ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721Enumerable)
-        returns (bool)
-    {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view override(ERC721, ERC721Enumerable) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }
